@@ -35,6 +35,7 @@ jobs:
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           port: 22
           script: |
-            mkdir -p /var/www/portfolio/.next
-            rsync -av --delete .next/ /var/www/portfolio/.next/
+            rsync -av --delete --exclude='.git' --exclude='node_modules' $GITHUB_WORKSPACE/ /var/www/portfolio/
+            cd /var/www/portfolio
+            npm install --production
             pm2 reload /var/www/portfolio/ecosystem.config.js
