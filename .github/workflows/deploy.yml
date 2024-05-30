@@ -24,6 +24,9 @@ jobs:
       - name: Build the project
         run: npm run build
 
+      - name: List directory contents
+        run: ls -la
+
       - name: Deploy to DigitalOcean
         uses: appleboy/ssh-action@v0.1.8
         with:
@@ -32,5 +35,6 @@ jobs:
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           port: 22
           script: |
-            rsync -av --delete .next/ ${{ secrets.DEPLOY_PATH }}/.next/
-            pm2 reload ecosystem.config.js
+            mkdir -p /var/www/portfolio/.next
+            rsync -av --delete .next/ /var/www/portfolio/.next/
+            pm2 reload /var/www/portfolio/ecosystem.config.js
