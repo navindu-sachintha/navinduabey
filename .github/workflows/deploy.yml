@@ -3,7 +3,7 @@ name: Deploy to DigitalOcean
 on:
   push:
     branches:
-      - main 
+      - main  # Change this to your main branch if different
 
 jobs:
   build:
@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20'
+          node-version: '20'  # Specify the Node.js version
 
       - name: Install dependencies
         run: npm install
@@ -25,10 +25,12 @@ jobs:
         run: npm run build
 
       - name: Deploy to DigitalOcean
-        uses: samsonjs/deploy-action@v1
+        uses: appleboy/ssh-action@v0.1.8
         with:
-          ssh-private-key: ${{ secrets.DEPLOY_SSH_KEY }}
           host: ${{ secrets.DEPLOY_HOST }}
-          user: ${{ secrets.DEPLOY_USER }}
-          remote-path: ${{ secrets.DEPLOY_PATH }}
-          args: rsync -av --delete .next/ /var/www/portfolio/.next/
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          port: 22
+          script: |
+            rsync -av --delete .next/ ${{ secrets.DEPLOY_PATH }}/.next/
+            pm2 reload ecosystem.config.js
