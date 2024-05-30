@@ -18,6 +18,12 @@ export const metadata: Metadata = {
         height: 600,
         alt: "Navindu Sachintha"
       },
+      {
+        url: "https://i.ibb.co/RC88yHP/Navindu.png",
+        width: 900,
+        height: 800,
+        alt: "Navindu Sachintha"
+      }
     ]
   }
 };
