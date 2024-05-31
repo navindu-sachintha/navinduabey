@@ -7,7 +7,7 @@ const items = [
     },
     {
         name: "projects",
-        href: "./projects",
+        href: "/projects",
     }
 ]
 
