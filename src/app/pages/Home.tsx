@@ -15,9 +15,9 @@ const tags = [
 const Homepage = () => {
   return (
     <section>
-        <h1 className="mb-8 text-2xl font-medium tracking-tighter">hey, I'm navindu 👋</h1>
+        <h1 className="mb-8 text-2xl font-medium tracking-tighter">hey, I&apos;m navindu 👋</h1>
         <p className='prose prose-neutral dark:prose-invert'>
-            I'm a fullstack developer, devops enthusiast, and co-founder at <span><Tag src={tags[0].src} name={tags[0].name} link={tags[0].link}/></span> I'm passionate about building software that solves real-world problems and helps people. I'm currently working on a few projects. I'm also a big fan of the CI/CD and cloud technologies. I'm always looking for new opportunities to learn and grow, so feel free to reach out!
+            I&apos;m a fullstack developer, devops enthusiast, and co-founder at <span><Tag src={tags[0].src} name={tags[0].name} link={tags[0].link}/></span> I&apos;m passionate about building software that solves real-world problems and helps people. I&apos;m currently working on a few projects. I&apos;m also a big fan of the CI/CD and cloud technologies. I&apos;m always looking for new opportunities to learn and grow, so feel free to reach out!
         </p>
         {/* ===============  Image grid ============================*/}
         <div className='grid grid-cols-2 grid-rows-4 sm:grid-rows-3 sm:grid-cols-3 gap-4 my-8'>
